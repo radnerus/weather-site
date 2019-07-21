@@ -12,7 +12,14 @@ getWeather = ({ latitude, longitude, place }, callback) => {
             callback('Can\'t find location.', undefined);
         } else {
             const currentData = body.currently;
-            callback(undefined, { place, forecast: body.daily.data[0].summary, temperature: currentData.temperature, rainPercentage: currentData.precipProbability * 100, formattedReport: `${place ? ('Weather at ' + place + ' is ') : ''}${body.daily.data[0].summary} It is currently ${currentData.temperature} degree out. There is ${currentData.precipProbability * 100} % chance of rain today.` });
+            callback(undefined, {
+                min: body.daily.data[0].temperatureLow,
+                max: body.daily.data[0].temperatureHigh,
+                place, forecast: body.daily.data[0].summary,
+                temperature: currentData.temperature,
+                rainPercentage: currentData.precipProbability * 100,
+                formattedReport: `${place ? ('Weather at ' + place + ' is ') : ''}${body.daily.data[0].summary} It is currently ${currentData.temperature} degree out. The high today is ${body.daily.data[0].temperatureHigh} and low today is ${body.daily.data[0].temperatureLow}. There is ${currentData.precipProbability * 100} % chance of rain today.`
+            });
         }
     });
 }

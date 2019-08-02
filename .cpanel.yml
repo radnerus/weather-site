@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/radnerus/blog.radnerus.in/
+    - /bin/cp * $DEPLOYPATH

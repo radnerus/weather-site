@@ -11,7 +11,7 @@ const VIEW_PATH = path.join(__dirname, '../templates/views');
 const PARTIALS_PATH = path.join(__dirname, '../templates/partials');
 
 const app = express();
-const port = process.env.PORT || 3000 ;
+const port = process.env.PORT || 8080 ;
 
 app.set('view engine', 'hbs');
 app.set('views', VIEW_PATH);
